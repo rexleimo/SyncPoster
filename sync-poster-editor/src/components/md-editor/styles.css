@@ -1,0 +1,17 @@
+/* custom-mde.css */
+.custom-mde {
+    width: 50%;
+    border-right: 0;
+}
+
+.custom-mde .mde-textarea-wrapper {
+    border-right: 1px solid #c8ccd0;
+}
+
+.preview-custom-hd {
+    border: 1px solid #c8ccd0;
+    border-left: 0;
+    background: #f9f9f9;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
