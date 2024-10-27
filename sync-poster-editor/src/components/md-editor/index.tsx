@@ -7,32 +7,42 @@ import rehypeRaw from 'rehype-raw';
 
 import "react-mde/lib/styles/css/react-mde-all.css";
 import "./styles.css";
+import {Blockquote, H1, P, H2, H3, Ol, Li} from "@/components/md-editor/components";
 
 const customStyles = {
-    h1: ({ node, ...props }) => (
-        <h1 style={{ color: 'red', fontSize: '2em' }} {...props} />
-    ),
+    h1: ({node, ...props}) => <H1 {...props} />,
+    h2: ({node, ...props}) => <H2 {...props} />,
+    h3: ({node, ...props}) => <H3 {...props}/>,
+    p: ({node, ...props}) => <P {...props} />,
+    ol: ({node, ...props}) => <Ol {...props} />,
+    li: ({node, ...props}) => <Li {...props} />,
+    blockquote: ({node, ...props}) => <Blockquote {...props} />
 };
 
-function MdEditor(){
+function MdEditor() {
 
     const [markdown, setMarkdown] = useState('');
     const [selectedTab, setSelectedTab] = useState<"write" | "preview" | undefined>('write');
 
     return (
-        <div className={"flex"}>
+        <div className={"flex h-full"}>
             <ReactMde
                 value={markdown}
                 onChange={setMarkdown}
                 selectedTab={selectedTab}
                 onTabChange={setSelectedTab}
                 childProps={{
-                    writeButton:{
-                        hidden:true
+                    writeButton: {
+                        hidden: true
                     },
                     previewButton: {
-                        hidden:true
+                        hidden: true
                     },
+                    textArea: {
+                        style: {
+                            height: "calc(100vh - 50px)"
+                        }
+                    }
                 }}
                 classes={{
                     reactMde: 'custom-mde'
@@ -40,13 +50,16 @@ function MdEditor(){
             />
             <div className={"flex-auto"}>
                 <div className={"min-h-[50px] preview-custom-hd"}></div>
-                <ReactMarkdown components={customStyles as any} rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
+                <div className={"p-[2em]"}>
+                    <ReactMarkdown components={customStyles as any}
+                                   rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
+                </div>
             </div>
         </div>
     )
 }
 
-export  default  MdEditor
+export default MdEditor
 
 
 
