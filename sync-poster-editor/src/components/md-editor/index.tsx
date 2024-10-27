@@ -1,8 +1,8 @@
 "use client"
 
-import ReactMde from 'react-mde';
+import ReactMde, {Command} from 'react-mde';
 import ReactMarkdown from 'react-markdown';
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import rehypeRaw from 'rehype-raw';
 
 import "react-mde/lib/styles/css/react-mde-all.css";
@@ -47,6 +47,7 @@ function MdEditor() {
                 classes={{
                     reactMde: 'custom-mde'
                 }}
+
             />
             <div className={"flex-auto"}>
                 <div className={"min-h-[50px] preview-custom-hd"}></div>

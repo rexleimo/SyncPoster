@@ -1,4 +1,5 @@
 ### node ###
+/.idea/workspace.xml
 # Logs
 logs
 *.log
@@ -79,4 +80,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+
 
