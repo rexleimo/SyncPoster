@@ -1,4 +1,3 @@
-import styles from 'styled-components';
 import {SectionStyle} from "@/components/md-editor/components/Section";
 import React from "react";
 

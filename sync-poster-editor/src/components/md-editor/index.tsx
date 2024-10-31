@@ -1,6 +1,6 @@
 "use client"
 
-import ReactMde, {Command} from 'react-mde';
+import ReactMde from 'react-mde';
 import ReactMarkdown from 'react-markdown';
 import {useState} from "react";
 import rehypeRaw from 'rehype-raw';
