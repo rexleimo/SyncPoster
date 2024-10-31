@@ -1,3 +1,5 @@
-export {default as H1, H2, H3} from './H1';
-export {P, Blockquote} from './Section';
-export {Ol, Li} from './List';
+export {H1Style, H2Style, H3Style} from './H1';
+export {PStyle, BlockquoteStyle} from './Section';
+export {OlStyle, LiStyle} from './List';
+
+export {default as ImageUploader} from './ImageUploader';

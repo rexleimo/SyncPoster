@@ -1,40 +1,33 @@
-import {IncomingForm} from 'formidable';
-import {NextResponse} from "next/server";
-import path from "node:path";
-import * as fs from "node:fs";
+import fs from 'fs';
+import path from 'path';
+import {NextRequest, NextResponse} from 'next/server';
 
+export const config = {
+    api: {
+        bodyParser: false,
+    },
+};
 
-export async function GET(request: Request) {
-    return Response.json({
-        name: "google"
-    })
-}
+export async function POST(req: NextRequest) {
+    const formData = await req.formData();
+    const file = formData.get('file') as File;
 
-export async function POST(req: Request) {
-    const form = new IncomingForm();
+    if (!file) {
+        return NextResponse.json({error: 'No file provided'}, {status: 400});
+    }
 
-    return new Promise((resolve, reject) => {
-        form.parse(req, (err: boolean, fields: any, files: any) => {
-            if (err) {
-                return resolve(NextResponse.json({message: '文件解析失败'}, {status: 500}));
-            }
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
 
-            const file = files.file;
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, {recursive: true});
+    }
 
-            if (!file) {
-                return resolve(NextResponse.json({message: '未选择文件'}, {status: 400}));
-            }
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const fileName = file.name;
+    const filePath = path.join(uploadDir, fileName);
 
-            const oldPath = file.filepath;
-            const newPath = path.join(process.cwd(), 'public', 'uploads', file.originalFilename);
+    fs.writeFileSync(filePath, buffer);
 
-            fs.rename(oldPath, newPath, (err) => {
-                if (err) {
-                    return resolve(NextResponse.json({message: '文件保存失败'}, {status: 500}));
-                }
-
-                return resolve(NextResponse.json({filename: file.originalFilename}, {status: 200}));
-            });
-        });
-    });
+    const imageUrl = `/uploads/${fileName}`;
+    return NextResponse.json({url: imageUrl}, {status: 200});
 }
