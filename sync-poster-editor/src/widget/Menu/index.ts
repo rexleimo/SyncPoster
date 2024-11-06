@@ -1,0 +1,1 @@
+export {default as MenuMp} from './Mp/MenuMp';
