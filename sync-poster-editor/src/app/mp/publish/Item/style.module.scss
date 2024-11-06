@@ -1,2 +1,8 @@
-.publicItem{
+.publicItem {
+  transition: opacity 0.375s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(246, 247, 248);
+  }
 }

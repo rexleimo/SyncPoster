@@ -1,0 +1,22 @@
+.publishItem {
+  .publishItemSpan {
+
+    &:hover {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &:before {
+      content: "";
+      display: block;
+      width: 0.25rem;
+      height: 0.25rem;
+      background-color: hsl(var(--nextui-default-300));
+      margin-right: 1rem;
+      border-radius: 50%;
+      opacity: unset;
+      transition: opacity 0.2s;
+    }
+  }
+}

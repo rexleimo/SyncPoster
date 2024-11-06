@@ -1,5 +1,1 @@
-function Publish() {
-    return <div></div>
-}
-
-export default Publish
+import PublishItem from "@/app/mp/publish/Item";function Publish() {  return (    <div className={"container m-auto"}>      <PublishItem />    </div>  );}export default Publish;
