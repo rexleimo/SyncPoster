@@ -2,7 +2,16 @@
   transition: opacity 0.375s ease-in-out;
   cursor: pointer;
 
+  .publicUntil {
+    opacity: 0;
+    transition: opacity 0.375s ease-in-out;
+  }
+
   &:hover {
     background-color: rgb(246, 247, 248);
+
+    .publicUntil {
+      opacity: 1;
+    }
   }
 }

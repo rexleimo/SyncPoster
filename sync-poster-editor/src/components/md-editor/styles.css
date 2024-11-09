@@ -5,13 +5,25 @@
 }
 
 .custom-mde .mde-textarea-wrapper {
-    border-right: 1px solid #c8ccd0;
+    border-right: 1px solid #e5e7eb;
 }
 
 .preview-custom-hd {
-    border: 1px solid #c8ccd0;
+    border: 1px solid #e5e7eb;
     border-left: 0;
     background: #f9f9f9;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+}
+
+.react-mde {
+    border-color: #e5e7eb;
+
+    .mde-header {
+        border-color: #e5e7eb;
+
+        .mde-textarea-wrapper {
+            border-color: #e5e7eb;
+        }
+    }
 }
