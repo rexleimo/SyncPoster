@@ -5,7 +5,7 @@ function Mp() {
   return (
     <div className={"relative container m-auto"}>
       <div className={"relative"}>
-        <h1 className={"text-2xl"}>草稿箱子</h1>
+        <h1 className={"text-2xl"}>草稿箱</h1>
       </div>
 
       <div className={"relative"}>
